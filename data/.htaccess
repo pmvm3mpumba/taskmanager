@@ -1,0 +1,2 @@
+# Interdit l'accès HTTP au dossier data/ (base SQLite)
+Require all denied
