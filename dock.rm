@@ -1,0 +1,92 @@
+    Voici notre cahier des charges mis à jour, intégrant cette page d'accueil informative, parfaitement structuré et prêt à être présenté à votre professeur :
+
+    CAHIER DES CHARGES / SPÉCIFICATIONS TECHNIQUES DU PROJET
+
+    Projet : Application web de gestion de tâches et de suivi de sessions (*« MonEspaceTâches »*)
+
+    1. Introduction et Architecture Générale du Site
+
+    - **Type de site :** Un site web hybride comportant une **vitrine publique** (informative) et un **espace privé sécurisé** (gestion de tâches et suivi de sessions).
+    - **Stack Technique :**
+    - **Frontend :** HTML5 et CSS3.
+    - **Backend :** PHP (gestion des scripts, des formulaires et des sessions).
+    - **Base de données :** **SQLite** (base de données légère basée sur un fichier unique `gestion_taches.db`).
+
+    2. Le Parcours Utilisateur (User Flow)
+
+    1. **Étape 1 : Visite de la page d'accueil publique (**`index.php`**)**
+    - Page informative présentant les objectifs du site, ses avantages et une présentation générale de l'application.
+    - Contient des liens d'accès direct vers les pages de **Connexion** et d'**Inscription**.
+    2. **Étape 2 : Inscription (**`register.php`**) ou Connexion (**`login.php`**)**
+    - L'utilisateur crée son compte depuis la plateforme ou se connecte avec ses identifiants.
+    3. **Étape 3 : L'Espace Privé / Tableau de Bord (**`dashboard.php`**)**
+    - Accessible uniquement après authentification réussie. C'est ici que l'utilisateur retrouve toutes ses fonctionnalités de gestion.
+
+    3. Architecture de la Base de Données (SQLite)
+
+    La base de données `gestion_taches.db` comprend trois tables relationnelles :
+
+    A. Table `users` (Gestion des utilisateurs)
+
+    - `id` : INTEGER, Clé primaire, Auto-incrémenté.
+    - `nom` : TEXT, Non NULL.
+    - `prenom` : TEXT, Non NULL.
+    - `email` : TEXT, Unique, Non NULL.
+    - `mot_de_passe` : TEXT, Non NULL (haché).
+
+    B. Table `activity` (Suivi des sessions)
+
+    - `id` : INTEGER, Clé primaire, Auto-incrémenté.
+    - `user_id` : INTEGER, Non NULL.
+    - `nom_utilisateur` : TEXT, Non NULL.
+    - `heure_connexion` : DATETIME, Non NULL (enregistré à la connexion).
+    - `heure_deconnexion` : DATETIME, NULL (enregistré à la déconnexion).
+    - `duree_session` : TEXT, NULL (calcul du temps passé).
+
+    C. Table `taches` (Gestion des tâches personnelles)
+
+    - `id` : INTEGER, Clé primaire, Auto-incrémenté.
+    - `user_id` : INTEGER, Non NULL.
+    - `titre` : TEXT, Non NULL.
+    - `description` : TEXT, NULL.
+    - `statut` : TEXT, Non NULL.
+    - `date_creation` : DATETIME, Défaut CURRENT_TIMESTAMP.
+
+    4. Description Détaillée des Fonctionnalités et Interfaces
+
+    A. La Page d'Accueil Informative (`index.php`)
+
+    - Présentation textuelle et visuelle du service de gestion de tâches.
+    - Boutons d'appel à l'action (*Call-to-Action*) : « S'inscrire » et « Se connecter ».
+
+    B. L'Authentification (`register.php`, `login.php`, `logout.php`)
+
+    - **Inscription :** Formulaire (Nom, Prénom, Email, Mot de passe) et insertion dans la table `users` (SQLite).
+    - **Connexion :** Vérification des identifiants, ouverture de la session PHP, et enregistrement automatique de l'heure de connexion dans la table `activity`.
+    - **Déconnexion :** Enregistrement de l'heure de déconnexion, calcul de la durée de session, mise à jour de la table `activity`, destruction de la session et redirection vers l'accueil.
+
+    C. Le Tableau de Bord Privé (`dashboard.php`)
+
+    Divisé en deux modules principaux :
+
+    - **Module 1 : Gestion des Tâches**
+    - **Affichage :** Un tableau répertoriant les tâches de l'utilisateur (*Titre, Description, Statut, Date*).
+    - **Statuts possibles :**
+        1. `À faire` (par défaut à la création).
+        2. `En cours`.
+        3. `Terminé`.
+    - **Boutons d'action par tâche :**
+        - **Modifier :** Pour mettre à jour le contenu de la tâche.
+        - **Changer de statut :** Pour basculer rapidement entre *À faire*, *En cours* et *Terminé*.
+        - **Supprimer :** Pour effacer définitivement la tâche de la base SQLite.
+    - *Un formulaire d'ajout rapide permet d'insérer de nouvelles tâches.*
+    - **Module 2 : Historique des Sessions**
+    - Un tableau de bord affichant les données de la table `activity` pour cet utilisateur : *Date, Heure de connexion, Heure de déconnexion, Durée totale*.
+
+
+
+    Je vais que tu me fasse ce systeme au complet en recpectant minucieusement toutes les exigene fixe,
+
+    La technologie est bien mentionner, il  s'agit du php pur, et du SQLite, du html, css.
+
+    NB : L'interface doit etre tres bien, un bo UI, UX, les forumale professioonel, le controle bien inclus, pour chaue fonctionnalite, une fonction correspondant, alors je vous faire.
